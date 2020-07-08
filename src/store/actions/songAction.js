@@ -1,28 +1,33 @@
 import axios from 'axios';
+import firebase from '../../config/config';
+const dbRef = firebase.firestore();
 export const GetSongData =()=>{
     return (dispatch)=>{
-        dispatch({type:'BEGIN_API'})
-        axios.get('http://dummy.restapiexample.com/api/v1/employees')
-        .then(function (response) {
-            debugger;
-           dispatch({type: 'GET_POST_DATA',payload: response.data.data});
-        })
+        dispatch({type:'BEGIN_API'});
+        dbRef.collection("songs").get().then((querySnapshot) => {
+            const data = querySnapshot.docs.map(doc => ({...doc.data(),id: doc.id}));
+            dispatch({type: 'GET_SONG_DATA',payload: data});
+        });
     }
 }
 
 export const SaveSongData =(data)=>{
-    let record =  {
+    let songRecord =  {
         "name": data.name,
-        "salary": data.content,
-        "age": data.author
+        "filmName": data.filmName,
+        "singer": data.singer,
+        "year":data.year
      }
     return (dispatch)=>{
-        dispatch({type:'BEGIN_API'})
-        axios.post('http://dummy.restapiexample.com/api/v1/create',record)
-        .then(function (response) {
-            debugger;
-           dispatch({type: 'SAVE_SONG_DATA',payload: response.data.data});
+        dispatch({type:'BEGIN_API'});
+        debugger
+        dbRef.collection("songs").doc().set(songRecord)
+        .then(function() {
+            dispatch({type: 'SAVE_SONG_DATA',payload: "SUCCESS"});
         })
+        .catch(function(error) {
+            console.error("Error writing document: ", error);
+        });
     }
 }
 

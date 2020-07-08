@@ -20,19 +20,22 @@ class ListSong extends Component{
         return(
             <div className="container">
                 <div className="row postHeader">
-                    <div className="col-md-1">
-                        #
-                    </div>
-                    <div className="col-md-3">
-                        Name
-                    </div>
-                    <div className="col-md-3">
-                        content
-                    </div>
-                    <div className="col-md-3">
-                        Author
+                    <div className="col-md-2">
+                        Id
                     </div>
                     <div className="col-md-2">
+                        Song Name
+                    </div>
+                    <div className="col-md-3">
+                        Film Name
+                    </div>
+                    <div className="col-md-2">
+                        Singer
+                    </div>
+                    <div className="col-md-2">
+                        Year
+                    </div>
+                    <div className="col-md-1">
                         Actions
                     </div>
                 </div>
@@ -46,7 +49,7 @@ class ListSong extends Component{
 const mapStateToProps = (state)=>{
     debugger
     return{
-        songs: state.songR.posts,
+        songs: state.songR.songs,
         loaderVal: state.songR.loader
     }
 }

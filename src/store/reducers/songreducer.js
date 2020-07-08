@@ -1,23 +1,23 @@
 const initialState={
-    posts: [],
-    newRecord: {},
+    songs: [],
+    newStatus: "",
     loader: false,
     updateStatus: ""
 }
 const songReducer =(state=initialState, action)=>{
     debugger
     switch(action.type){
-        case 'GET_POST_DATA':
+        case 'GET_SONG_DATA':
             return {
                 ...state,
-                posts: action.payload,
+                songs: action.payload,
                 loader: false
             }
         break;
         case 'SAVE_SONG_DATA':
             return {
                 ...state,
-                newRecord: action.payload,
+                newStatus: action.payload,
                 loader: false
             }
         break;

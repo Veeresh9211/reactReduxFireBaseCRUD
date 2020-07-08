@@ -2,6 +2,7 @@ import React from 'react';
 import {SaveSongData} from '../../store/actions/songAction';
 import DataLoader from '../loader/dataLoader';
 import {connect} from 'react-redux';
+import $ from 'jquery';
 
 class AddSong extends React.Component{
     constructor(props){
@@ -21,44 +22,50 @@ class AddSong extends React.Component{
     }
     render(){
         let dataLoader = this.props.loaderVal ? <DataLoader/> : "";
+        if(this.props.newStatusRef == 'SUCCESS'){
+            $("#newSuccessModal").modal();
+        }
         return(
             <div className="container formAlignment">
-                <h3>New Record</h3>
+                <h3>New Song</h3>
                 <form onSubmit={this.saveSong.bind(this)}>
                     <div className="form-group">
-                        <label >Name</label>
-                        <input type="text" className="form-control" id="name" onChange={this.handleChange} placeholder="Enter Name"/>
+                        <label >Song Name</label>
+                        <input type="text" className="form-control" id="name" onChange={this.handleChange} placeholder="Enter Song Name"/>
                     </div>
                     <div className="form-group">
-                        <label>Content</label>
-                        <textarea className="form-control" id="content" onChange={this.handleChange} placeholder="Enter Content"/>
+                        <label>Film Name</label>
+                        <textarea className="form-control" id="filmName" onChange={this.handleChange} placeholder="Enter Film Name"/>
                     </div>
                     <div className="form-group">
-                        <label>Author</label>
-                        <input type="text" className="form-control" id="author" onChange={this.handleChange} placeholder="Enter Author"/>
+                        <label>Singer</label>
+                        <input type="text" className="form-control" id="singer" onChange={this.handleChange} placeholder="Enter Singer"/>
+                    </div>
+                    <div className="form-group">
+                        <label>Year</label>
+                        <input type="number" className="form-control" id="year" onChange={this.handleChange} placeholder="Enter Year"/>
                     </div>
                     <button type="submit" className="btn btn-primary">Save Record</button>
                 </form>
                 {dataLoader}
-                <div style={{marginTop:"3%"}} className="container">
-                    <table className="table table-bordered">
-                        <thead>
-                            <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Content</th>
-                            <th scope="col">Author</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                            <th scope="row">{this.props.newRecordRef.id}</th>
-                            <td>{this.props.newRecordRef.name}</td>
-                            <td>{this.props.newRecordRef.salary}</td>
-                            <td>{this.props.newRecordRef.age}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+
+                <div className="modal fade" id="newSuccessModal" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                    <div className="modal-dialog modal-dialog-centered" role="document">
+                        <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="exampleModalLongTitle">Notification</h5>
+                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div className="modal-body">
+                            Record Successfully Created.
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
@@ -67,7 +74,7 @@ class AddSong extends React.Component{
 const mapStateToProps = (state)=>{
     debugger
     return{
-        newRecordRef: state.songR.newRecord,
+        newStatusRef: state.songR.newStatus,
         loaderVal: state.songR.loader
     }
 }
