@@ -8,10 +8,6 @@ export const GetSongData =()=>{
            dispatch({type: 'GET_POST_DATA',payload: response.data.data});
         })
     }
-    return{
-        type: 'GET_POST_DATA',
-        
-    }
 }
 
 export const SaveSongData =(data)=>{
@@ -28,9 +24,20 @@ export const SaveSongData =(data)=>{
            dispatch({type: 'SAVE_SONG_DATA',payload: response.data.data});
         })
     }
-    return{
-        type: 'GET_POST_DATA',
-        
+}
+
+export const UpdateSongData =(data)=>{
+    let record =  {
+        "name": data.name,
+        "salary": data.content,
+        "age": data.author
+     }
+    return (dispatch)=>{
+        dispatch({type:'BEGIN_API'})
+        axios.put(`http://dummy.restapiexample.com/api/v1/update/${data.id}`,record)
+        .then(function (response) {
+            debugger;
+           dispatch({type: 'UPDATE_SONG_DATA',payload: response.status});
+        })
     }
 }
-// export default GetSongData;

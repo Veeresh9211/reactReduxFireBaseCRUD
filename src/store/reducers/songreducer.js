@@ -1,7 +1,8 @@
 const initialState={
     posts: [],
     newRecord: {},
-    loader: false
+    loader: false,
+    updateStatus: ""
 }
 const songReducer =(state=initialState, action)=>{
     debugger
@@ -17,6 +18,13 @@ const songReducer =(state=initialState, action)=>{
             return {
                 ...state,
                 newRecord: action.payload,
+                loader: false
+            }
+        break;
+        case 'UPDATE_SONG_DATA':
+            return {
+                ...state,
+                updateStatus: action.payload,
                 loader: false
             }
         break;
