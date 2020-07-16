@@ -7,15 +7,15 @@ const navBar=()=>{
             <span class="navbar-toggler-icon"></span>
           </button>
           <h3 className="nav-item active">
-            <Link to="/" className="nav-link">Redux TODO</Link>
+            <Link to="/" className="nav-link">Bus Details</Link>
           </h3>           
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav mr-auto">
           <li className="nav-item active">
-              <Link to="/listSong" className="nav-link">List Song</Link>
+              <Link to="/listBus" className="nav-link">List Buses</Link>
             </li>
             <li className="nav-item active">
-              <Link to="/addSong" className="nav-link">Add Song</Link>
+              <Link to="/addBus" className="nav-link">Add Bus</Link>
             </li>    
           </ul>
           </div>

@@ -1,8 +1,8 @@
 import {combineReducers} from 'redux';
-import SongReducer from './songreducer';
+import BusReducer from './busreducer';
 
 const rootReducer = combineReducers({
-    songR: SongReducer
+    busR: BusReducer
 })
 
 export default rootReducer;
