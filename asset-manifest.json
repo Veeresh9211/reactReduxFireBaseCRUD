@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/reactReduxFireBaseCRUD/static/css/main.c7571e02.chunk.css",
+    "main.js": "/reactReduxFireBaseCRUD/static/js/main.58e129ac.chunk.js",
+    "main.js.map": "/reactReduxFireBaseCRUD/static/js/main.58e129ac.chunk.js.map",
+    "runtime-main.js": "/reactReduxFireBaseCRUD/static/js/runtime-main.c6b1f75b.js",
+    "runtime-main.js.map": "/reactReduxFireBaseCRUD/static/js/runtime-main.c6b1f75b.js.map",
+    "static/css/2.591d4c47.chunk.css": "/reactReduxFireBaseCRUD/static/css/2.591d4c47.chunk.css",
+    "static/js/2.63346eea.chunk.js": "/reactReduxFireBaseCRUD/static/js/2.63346eea.chunk.js",
+    "static/js/2.63346eea.chunk.js.map": "/reactReduxFireBaseCRUD/static/js/2.63346eea.chunk.js.map",
+    "index.html": "/reactReduxFireBaseCRUD/index.html",
+    "precache-manifest.c7abd92b2d29895281eeb1a9c121078b.js": "/reactReduxFireBaseCRUD/precache-manifest.c7abd92b2d29895281eeb1a9c121078b.js",
+    "service-worker.js": "/reactReduxFireBaseCRUD/service-worker.js",
+    "static/css/2.591d4c47.chunk.css.map": "/reactReduxFireBaseCRUD/static/css/2.591d4c47.chunk.css.map",
+    "static/css/main.c7571e02.chunk.css.map": "/reactReduxFireBaseCRUD/static/css/main.c7571e02.chunk.css.map",
+    "static/js/2.63346eea.chunk.js.LICENSE.txt": "/reactReduxFireBaseCRUD/static/js/2.63346eea.chunk.js.LICENSE.txt",
+    "static/media/logo.svg": "/reactReduxFireBaseCRUD/static/media/logo.5d5d9eef.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c6b1f75b.js",
+    "static/css/2.591d4c47.chunk.css",
+    "static/js/2.63346eea.chunk.js",
+    "static/css/main.c7571e02.chunk.css",
+    "static/js/main.58e129ac.chunk.js"
+  ]
+}
