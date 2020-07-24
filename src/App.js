@@ -7,20 +7,48 @@ import AddBus from './components/addBus/addBus';
 import UpdateBus from './components/updateBus/updateBus';
 import Dashboard from './components/dashboard/dashboard';
 import Navbar from './components/layout/navbar';
+import $ from 'jquery';
+
 
 
 function App() {
+
+  const showFilter=()=>{
+    debugger
+    var element = document.getElementById("subContainer2");
+    $($(element).children()[0]).toggleClass("closed")
+    $($(element).children()[1]).toggleClass("opened")
+    debugger
+    element.classList.toggle("myStyle");
+  }
   return (
     <BrowserRouter>
     <div className="app">
-      <Navbar/>
-      <Switch>
-        <Route exact path="/" component={Dashboard}/>
-        <Route path="/listBus" component={ListBus}/>
-        <Route path="/addBus" component={AddBus}/>
-        <Route path="/updateBus/:id" component={UpdateBus}/>   
-      </Switch>
+      <div className="mainContainer">
+        <div id="subContainer1">
+          <Navbar/>
+          <Switch>
+            <Route exact path="/" component={Dashboard}/>
+            <Route path="/listBus" component={ListBus}/>
+            <Route path="/addBus" component={AddBus}/>
+            <Route path="/updateBus/:id" component={UpdateBus}/>   
+          </Switch>
+        </div>
+     
+        <div id="subContainer2" onClick={showFilter}>
+          <div>
+              Closed
+          </div>
+          <div className="opened">
+            Opened
+            Opened
+            Opened
+            Opened
+          </div>
+        </div>
+        
       </div>
+    </div>
     </BrowserRouter>
   );
 }

@@ -12,6 +12,7 @@ export const GetBusData =()=>{
 }
 
 export const SaveBusData =(data)=>{
+    debugger
     let busRecord =  {
         "name": data.name,
         "Type": data.Type,
@@ -24,9 +25,11 @@ export const SaveBusData =(data)=>{
         debugger
         dbRef.collection("Buses").doc().set(busRecord)
         .then(function() {
+            debugger
             dispatch({type: 'SAVE_BUS_DATA',payload: "SUCCESS"});
         })
         .catch(function(error) {
+            debugger
             console.error("Error writing document: ", error);
         });
     }
@@ -43,5 +46,17 @@ export const UpdateBusData =(data)=>{
             debugger;
            dispatch({type: 'UPDATE_BUS_DATA',payload: response.status});
         })
+    }
+}
+
+export const DeleteBusData =(data)=>{
+   debugger
+    return (dispatch)=>{
+        dispatch({type:'BEGIN_API'})
+        // axios.put(`http://dummy.restapiexample.com/api/v1/update/${data.id}`,record)
+        // .then(function (response) {
+        //     debugger;
+        //    dispatch({type: 'UPDATE_BUS_DATA',payload: response.status});
+        // })
     }
 }

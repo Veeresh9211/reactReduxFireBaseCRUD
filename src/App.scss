@@ -1,6 +1,22 @@
 .app {
 // background-image: url(/super-mario.png);
 // background-repeat: no-repeat;
+.mainContainer{
+  display: flex;
+  #subContainer1{
+    flex: 1;
+    transition: all 500ms linear;
+  }
+  #subContainer2{
+    transition: all 500ms linear;
+    .opened{ 
+      display:none; 
+    }
+    .closed{
+      display:none;
+    }
+  }
+}
 .container{
   .postHeader{
     border-top: solid 1px grey;
@@ -52,6 +68,10 @@ h3{
   margin: 5%;
   color: black;
 }
+}
+
+.myStyle {
+    flex: 0.3;
 }
 
 .App-logo {

@@ -2,7 +2,8 @@ const initialState={
     buses: [],
     newStatus: "",
     loader: false,
-    updateStatus: ""
+    updateStatus: "",
+    deleteStatus: ""
 }
 const busReducer =(state=initialState, action)=>{
     debugger
@@ -25,6 +26,13 @@ const busReducer =(state=initialState, action)=>{
             return {
                 ...state,
                 updateStatus: action.payload,
+                loader: false
+            }
+        break;
+        case 'DELETE_BUS_DATA':
+            return {
+                ...state,
+                deleteStatus: action.payload,
                 loader: false
             }
         break;
