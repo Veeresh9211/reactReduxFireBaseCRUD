@@ -2,8 +2,7 @@ const initialState={
     buses: [],
     newStatus: "",
     loader: false,
-    updateStatus: "",
-    deleteStatus: ""
+    updateStatus: ""
 }
 const busReducer =(state=initialState, action)=>{
         switch(action.type){
@@ -19,22 +18,13 @@ const busReducer =(state=initialState, action)=>{
             return {
                 ...state,
                 newStatus: action.payload,
-                loader: false,
-                deleteStatus: ""
+                loader: false
             }
         break;
         case 'UPDATE_BUS_DATA':
             return {
                 ...state,
                 updateStatus: action.payload,
-                loader: false,
-                newStatus: ""
-            }
-        break;
-        case 'DELETE_BUS_DATA':
-            return {
-                ...state,
-                deleteStatus: action.payload,
                 loader: false,
                 newStatus: ""
             }

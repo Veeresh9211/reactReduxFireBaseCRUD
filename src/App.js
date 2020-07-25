@@ -31,20 +31,7 @@ function App() {
             <Route path="/addBus" component={AddBus}/>
             <Route path="/updateBus/:id" component={UpdateBus}/>   
           </Switch>
-        </div>
-     
-        <div id="subContainer2" onClick={showFilter}>
-          <div>
-              Closed
-          </div>
-          <div className="opened">
-            Opened
-            Opened
-            Opened
-            Opened
-          </div>
-        </div>
-        
+        </div>        
       </div>
     </div>
     </BrowserRouter>

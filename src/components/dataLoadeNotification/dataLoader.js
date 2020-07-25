@@ -2,8 +2,8 @@ import React from 'react';
 import Loader from 'react-loader-spinner'
 import {Modal} from 'react-bootstrap'
 import { useDispatch, useSelector } from "react-redux";
-
 import './dataLoader.scss';
+
 function DataLoader(props){
   const loader1 = useSelector(state => state.busR.loader);
      return(

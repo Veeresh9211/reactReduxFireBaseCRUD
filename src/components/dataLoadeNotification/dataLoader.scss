@@ -11,17 +11,23 @@
 }
 
 .toast.show {
-    
+    position: fixed;
+    left: 48%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    z-index: 999;
+    width: 21%;
+    backdrop-filter: none
 }
 
 @media only screen and (max-width: 600px) {
     .toast.show {
-        width: 58%;
-        top: 35%;
+        width: 58% !important;
+        top: 35%  !important;
     }
   }
 
-  @media only screen 
+@media only screen 
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : portrait) {

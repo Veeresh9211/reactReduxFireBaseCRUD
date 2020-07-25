@@ -15,7 +15,7 @@ function ListBus(props){
     useEffect(()=>{
         dispatch(GetBusData())
     },[0])
-    let notification = deleteStatusRef == 'DELETE_SUCCESS' ? <Notification data="Record Successfully Deleted"/> : ""
+   
     let dataLoader = loaderVal ? <DataLoader/> : "";
     let busDetail = buses.length > 0 && buses.map((bus)=>{
         return <BusDetails bus={bus} key={bus.id} deleteHander={(d)=>dispatch(DeleteBusData(d))}/>
@@ -23,7 +23,7 @@ function ListBus(props){
     
     return(
         <div className="container">
-            {notification}
+            <Notification data="Record Successfully Deleted"/>
             <div className="row postHeader">
                 <div className="col-md-2">
                     Name

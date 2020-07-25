@@ -1,110 +1,56 @@
 .app {
-// background-image: url(/super-mario.png);
-// background-repeat: no-repeat;
-.mainContainer{
-  display: flex;
-  #subContainer1{
-    flex: 1;
-    transition: all 500ms linear;
-  }
-  #subContainer2{
-    transition: all 500ms linear;
-    .opened{ 
-      display:none; 
-    }
-    .closed{
-      display:none;
-    }
-  }
-}
-.container{
-  .postHeader{
-    border-top: solid 1px grey;
-    border-bottom: solid 1px grey;
-    margin-top: 2%;
-    padding: 1%;
-  }
-  .postDataList{
-      border-bottom: solid 1px lightgray;
+  .container{
+    .postHeader{
+      border-top: solid 1px grey;
+      border-bottom: solid 1px grey;
+      margin-top: 2%;
       padding: 1%;
+    }
+    .postDataList{
+        border-bottom: solid 1px lightgray;
+        padding: 1%;
+    }
   }
-}
-text-align: center;
-h3{
-  .nav-link{
-    color: black !important;
+
+  h3{
+    .nav-link{
+      color: black !important;
+    }
   }
-}
-.navbar{
-  background-color: lightblue !important;
-  .mr-auto{
-    margin-left: 65%;
+  .navbar{
+    background-color: lightblue !important;
   }
-}
-.formAlignment{
-  margin-top: 3%;
-  text-align: left;
-}
-.container{    
-  .form-group{
-    width: 50%;
+  .formAlignment{
+    margin-top: 3%;
   }
-  .btn-primary {
-    color: black;
-    background-color: lightpink !important;
-    border-color: lightpink;
-    outline: none !important;
+  .container{    
+    .form-group{
+      width: 50%;
+    }
+    .btn-primary {
+      color: black;
+      background-color: lightpink !important;
+      border-color: lightpink;
+      outline: none !important;
+    }
   }
-}
+  @media only screen and (max-width: 600px) {
+    .container{    
+      .form-group{
+        width: 100%;
+      }
+    }
+  } // end for media query max-width: 600px
 
-.projectListContainer{
-  .projectSummary{
-    margin: 5%;
-    color: brown;
-  }
-}
-.projectDetails{
-  text-align: left;
-  margin: 5%;
-  color: black;
-}
-}
+  @media only screen 
+    and (min-device-width : 768px) 
+    and (max-device-width : 1024px) 
+    and (orientation : portrait) {
+      .container{    
+        .form-group{
+          width: 100%;
+        }
+      }
+  } // end for media query min-device-width : 768px
 
-.myStyle {
-    flex: 0.3;
-}
-
-.App-logo {
-height: 40vmin;
-pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-}
-}
-
-.App-header {
-background-color: #282c34;
-min-height: 100vh;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: center;
-font-size: calc(10px + 2vmin);
-color: white;
-}
-
-.App-link {
-color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-from {
-  transform: rotate(0deg);
-}
-to {
-  transform: rotate(360deg);
-}
-}
+} // end of .app

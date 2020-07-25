@@ -24,6 +24,7 @@ export const SaveBusData =(data)=>{
         dbRef.collection("Buses").doc().set(busRecord)
         .then(function() {
             dispatch({type: 'SAVE_BUS_DATA',payload: "SUCCESS"});
+            dispatch({type: 'SHOW_NOTIFICATION',payload: true});
         })
         .catch(function(error) {
             console.error("Error writing document: ", error);
@@ -50,7 +51,7 @@ export const DeleteBusData =(data)=>{
         dbRef.collection("Buses").doc(data).delete().then(function(response) {
             dbRef.collection("Buses").get().then((querySnapshot) => {
                 const data = querySnapshot.docs.map(doc => ({...doc.data(),id: doc.id}));
-                dispatch({type:'DELETE_BUS_DATA', payload:'DELETE_SUCCESS'})
+                dispatch({type: 'SHOW_NOTIFICATION',payload: true});
                 dispatch({type: 'GET_BUS_DATA',payload: data});
             });
         }).catch(function(error) {
