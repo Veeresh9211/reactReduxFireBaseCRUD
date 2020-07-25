@@ -1,7 +1,7 @@
 import React,{useState} from 'react';
 import {SaveBusData} from '../../store/actions/busAction';
 import { useDispatch, useSelector } from "react-redux";
-import DataLoader from '../loader/dataLoader';
+import DataLoader from '../dataLoadeNotification/dataLoader';
 import {connect} from 'react-redux';
 import $ from 'jquery';
 
@@ -19,7 +19,6 @@ function AddBus(props){
     }
 
     const saveSong =()=>{
-        debugger
         SaveBusData(bus);
     }
 
@@ -77,7 +76,6 @@ function AddBus(props){
     )
 }
 // const mapStateToProps = (state)=>{
-//     debugger
 //     return{
 //         newStatusRef: state.busR.newStatus,
 //         loaderVal: state.busR.loader

@@ -1,6 +1,6 @@
 import React from 'react';
 // import {SaveSongData} from '../../store/actions/songAction';
-import DataLoader from '../loader/dataLoader';
+import DataLoader from '../dataLoadeNotification/dataLoader';
 import {connect} from 'react-redux';
 import { UpdateBusData } from '../../store/actions/busAction';
 import $ from 'jquery';
@@ -9,7 +9,6 @@ import $ from 'jquery';
 class UpdateBus extends React.Component{
     constructor(props){
         super(props);
-        debugger
         this.state={
             id: this.props.location.state.id,
             name: this.props.location.state.name,
@@ -21,12 +20,10 @@ class UpdateBus extends React.Component{
         }
     }
     handleChange=(e)=>{
-        debugger
         this.setState({[e.currentTarget.id]: e.currentTarget.value})
     }
 
     updateSong(e){
-        debugger
         e.preventDefault();
         this.props.updateBusRef(this.state)
 
@@ -34,7 +31,6 @@ class UpdateBus extends React.Component{
 
     render(){
         let dataLoader = this.props.loaderVal ? <DataLoader/> : "";
-        debugger
         if(this.props.updateStatusRef == 200){
             $("#updateSuccessModal").modal();
         }
@@ -96,7 +92,6 @@ class UpdateBus extends React.Component{
     }
 }
 const mapStateToProps = (state)=>{
-    debugger
     return{
         updateStatusRef: state.busR.updateStatus,
         loaderVal: state.busR.loader

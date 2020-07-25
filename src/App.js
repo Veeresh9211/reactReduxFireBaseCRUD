@@ -14,11 +14,9 @@ import $ from 'jquery';
 function App() {
 
   const showFilter=()=>{
-    debugger
     var element = document.getElementById("subContainer2");
     $($(element).children()[0]).toggleClass("closed")
     $($(element).children()[1]).toggleClass("opened")
-    debugger
     element.classList.toggle("myStyle");
   }
   return (

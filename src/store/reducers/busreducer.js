@@ -6,34 +6,37 @@ const initialState={
     deleteStatus: ""
 }
 const busReducer =(state=initialState, action)=>{
-    debugger
-    switch(action.type){
+        switch(action.type){
         case 'GET_BUS_DATA':
             return {
                 ...state,
                 buses: action.payload,
-                loader: false
+                loader: false,
+                newStatus: ""
             }
         break;
         case 'SAVE_BUS_DATA':
             return {
                 ...state,
                 newStatus: action.payload,
-                loader: false
+                loader: false,
+                deleteStatus: ""
             }
         break;
         case 'UPDATE_BUS_DATA':
             return {
                 ...state,
                 updateStatus: action.payload,
-                loader: false
+                loader: false,
+                newStatus: ""
             }
         break;
         case 'DELETE_BUS_DATA':
             return {
                 ...state,
                 deleteStatus: action.payload,
-                loader: false
+                loader: false,
+                newStatus: ""
             }
         break;
         case 'BEGIN_API':

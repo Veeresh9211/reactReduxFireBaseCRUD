@@ -1,9 +1,8 @@
 import React,{useEffect} from 'react';
 import {Link} from 'react-router-dom';
 import { useDispatch, useSelector } from "react-redux";
-import {DeleteBusData} from '../../store/actions/busAction';
 const BusDetails =(props)=>{
-    const dispatch = useDispatch();
+    // const dispatch = useDispatch();
     return(
         <div className=" row postDataList">
             <div className="col-md-2">
@@ -22,7 +21,7 @@ const BusDetails =(props)=>{
                 {props.bus.year}
             </div>
             <div className="col-md-1">
-                {/* <button onClick={dispatch(DeleteBusData(props.bus.id))}>Delete</button> */}
+                <button onClick={()=>props.deleteHander(props.bus.id)}>Delete</button>
                 
                 <Link to={{pathname: `/updatebus/${props.bus.id}`,state: props.bus}} className="nav-link">Update bus</Link>
             </div>
