@@ -1,32 +1,22 @@
 import React,{useEffect} from 'react';
 import {Link} from 'react-router-dom';
-import { useDispatch, useSelector } from "react-redux";
 const BusDetails =(props)=>{
-    // const dispatch = useDispatch();
     return(
-        <div className=" row postDataList">
-            <div className="col-md-2">
-                {props.bus.name}
-            </div>
-            <div className="col-md-2">
-                {props.bus.Type}
-            </div>
-            <div className="col-md-3">
-                {props.bus.Seats}
-            </div>
-            <div className="col-md-2">
-                {props.bus.Company}
-            </div>
-            <div className="col-md-2">
-                {props.bus.year}
-            </div>
-            <div className="col-md-1">
-                <button onClick={()=>props.deleteHander(props.bus.id)}>Delete</button>
-                
-                <Link to={{pathname: `/updatebus/${props.bus.id}`,state: props.bus}} className="nav-link">Update bus</Link>
-            </div>
-            <hr/>
-        </div>
+        <React.Fragment>
+            <tr>            
+                <th scope="row">{props.bus.id}</th>
+                <td>{props.bus.name}</td>
+                <td>{props.bus.Type}</td>
+                <td>{props.bus.Seats}</td>
+                <td>{props.bus.Company}</td>
+                <td>{props.bus.year}</td>
+                <td>
+                    <button onClick={()=>props.deleteHander(props.bus.id)} className="btn-block btn-sm btn btn-outline-danger">Delete</button>
+                    <Link className="btn-block btn btn-outline-warning btn-sm" to={{pathname: `/updatebus/${props.bus.id}`,state: props.bus}}>Update</Link>
+                </td>
+            </tr>
+
+        </React.Fragment>
     )
 }
 

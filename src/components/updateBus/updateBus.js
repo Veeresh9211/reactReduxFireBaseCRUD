@@ -1,36 +1,33 @@
-import React from 'react';
+import React,{useState, useEffect, Component} from 'react';
 // import {SaveSongData} from '../../store/actions/songAction';
 import DataLoader from '../dataLoadeNotification/dataLoader';
-import {connect} from 'react-redux';
-import { UpdateBusData } from '../../store/actions/busAction';
+import {connect, useSelector, useDispatch} from 'react-redux';
+import { UpdateBusData, GetSingleBusData } from '../../store/actions/busAction';
 import $ from 'jquery';
+import Notification from '../dataLoadeNotification/notification';
 
+class UpdateBus extends Component{
 
-class UpdateBus extends React.Component{
     constructor(props){
         super(props);
         this.state={
-            id: this.props.location.state.id,
-            name: this.props.location.state.name,
-            Type: this.props.location.state.Type,
-            Seats: this.props.location.state.Seats,
-            Company: this.props.location.state.Company,
-            year: this.props.location.state.year
-
         }
+    }
+    componentDidMount(dispatch){
+        this.props.getSingleBusData(this.props.location.state.id).then((res)=>{
+            this.setState({...res})
+        })
     }
     handleChange=(e)=>{
         this.setState({[e.currentTarget.id]: e.currentTarget.value})
     }
 
-    updateSong(e){
+    updateSong=(e)=>{
         e.preventDefault();
-        this.props.updateBusRef(this.state)
-
+        this.props.updateBusRef(this.props.location.state.id,this.state);
     }
-
     render(){
-        let dataLoader = this.props.loaderVal ? <DataLoader/> : "";
+        var dataLoader = this.props.loaderVal ? <DataLoader/> : "";
         if(this.props.updateStatusRef == 200){
             $("#updateSuccessModal").modal();
         }
@@ -38,35 +35,35 @@ class UpdateBus extends React.Component{
 
             <div className="container formAlignment">
                 <h3>Update Record</h3>
-                {/* {this.props.updateStatusRef} */}
-                <form onSubmit={this.updateSong.bind(this)}>
-                <div className="form-group">
-                        <label >Id</label>
-                        <input type="text" value={this.state.id} className="form-control" id="id" onChange={this.handleChange} readOnly/>
-                    </div>
+                <Notification data="Record Successfully Updated"/>
+                <form onSubmit={this.updateSong}>
                     <div className="form-group">
-                        <label >Name</label>
-                        <input type="text" value={this.state.name} className="form-control" id="name" onChange={this.handleChange} placeholder="Enter Name"/>
-                    </div>
-                    <div className="form-group">
-                        <label>Type</label>
-                        <input value={this.state.Type} type="text" className="form-control" id="Type" onChange={this.handleChange} placeholder="Enter Type"/>
-                    </div>
-                    <div className="form-group">
-                        <label>Seats</label>
-                        <input value={this.state.Seats} type="number" className="form-control" id="Seats" onChange={this.handleChange} placeholder="Enter Seats"/>
-                    </div>
-                    <div className="form-group">
-                        <label>Company</label>
-                        <input value={this.state.Company} type="text" className="form-control" id="Company" onChange={this.handleChange} placeholder="Enter Company"/>
-                    </div>
-                    <div className="form-group">
-                        <label>Year</label>
-                        <textarea value={this.state.year} className="form-control" id="year" onChange={this.handleChange} placeholder="Enter Year"/>
-                    </div>
-                    
-                    <button type="submit" className="btn btn-primary">Update Record</button>
-                </form>
+                            <label >Id</label>
+                            <input type="text" value={this.props.location.state.id || ""} className="form-control" id="id" onChange={this.handleChange} readOnly/>
+                        </div>
+                        <div className="form-group">
+                            <label >Name</label>
+                            <input type="text" value={this.state.name || ""} className="form-control" id="name" onChange={this.handleChange} placeholder="Enter Name"/>
+                        </div>
+                        <div className="form-group">
+                            <label>Type</label>
+                            <input type="text" value={this.state.Type || ""} className="form-control" id="Type" onChange={this.handleChange} placeholder="Enter Type"/>
+                        </div>
+                        <div className="form-group">
+                            <label>Seats</label>
+                            <input  type="number" value={this.state.Seats || ""} className="form-control" id="Seats" onChange={this.handleChange} placeholder="Enter Seats"/>
+                        </div>
+                        <div className="form-group">
+                            <label>Company</label>
+                            <input  type="text" value={this.state.Company || ""} className="form-control" id="Company" onChange={this.handleChange} placeholder="Enter Company"/>
+                        </div>
+                        <div className="form-group">
+                            <label>Year</label>
+                            <textarea  value={this.state.year || ""} className="form-control" id="year" onChange={this.handleChange} placeholder="Enter Year"/>
+                        </div>
+                        <button type="submit" className="btn btn-primary">Update Record</button>
+                    </form>
+                
                 {dataLoader}
 
                 <div className="modal fade" id="updateSuccessModal" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
@@ -90,18 +87,21 @@ class UpdateBus extends React.Component{
             </div>
         )
     }
+   
 }
 const mapStateToProps = (state)=>{
     return{
         updateStatusRef: state.busR.updateStatus,
-        loaderVal: state.busR.loader
+        loaderVal: state.busR.loader,
+        singleBusData: state.busR.singleBusData
     }
 }
 
 
 const dispatcActionToProps = (dispatch) =>{
     return{
-        updateBusRef: (record)=> dispatch(UpdateBusData(record))
+        updateBusRef: (id,record)=> dispatch(UpdateBusData(id,record)),
+        getSingleBusData: (id) => dispatch(GetSingleBusData(id))
     }
 }
 export default connect(mapStateToProps,dispatcActionToProps)(UpdateBus);

@@ -1,20 +1,17 @@
 .app {
   .container{
-    .postHeader{
-      border-top: solid 1px grey;
-      border-bottom: solid 1px grey;
-      margin-top: 2%;
-      padding: 1%;
-    }
-    .postDataList{
-        border-bottom: solid 1px lightgray;
-        padding: 1%;
+    margin-top: 3%;
+    .table-responsive{
+      max-height: 500px;
     }
   }
-
+  a.nav-link {
+    color: white !important;
+}
   h3{
     .nav-link{
-      color: black !important;
+      color: red !important;
+      font-style: italic;
     }
   }
   .navbar{

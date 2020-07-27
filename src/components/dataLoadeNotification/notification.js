@@ -10,7 +10,7 @@ function Notification(props){
     const closeNotification = () => dispatch({type: 'END_NOTIFICATION',payload: false});
 
     return(
-        <Toast  show={notify} onClose={closeNotification}  style={{position: "fixed",left: "48%",top: "45%",transform: "translate(-50%, -50%)",zIndex: "999",width: "21%","backdrop-filter": "none"}}>
+        <Toast  show={notify} onClose={closeNotification}  style={{position: "fixed",left: "48%",top: "45%",transform: "translate(-50%, -50%)",zIndex: "999",width: "21%","backdropFilter": "none"}}>
         {/* <Toast show={notify} onClose={closeNotification}>  */}
             
             <Toast.Header style={{    backgroundColor: "lightgreen"}}>

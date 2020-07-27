@@ -11,6 +11,17 @@ export const GetBusData =()=>{
     }
 }
 
+export const GetSingleBusData =(id)=>{
+    return (dispatch)=>{
+        dispatch({type:'BEGIN_API'});
+        return dbRef.collection("Buses").doc(id).get().then((querySnapshot) => {
+            const data = querySnapshot.data()
+            dispatch({type: 'GET_SINGLE_BUS_DATA',payload: data});
+            return Promise.resolve(data)
+        });
+    }
+}
+
 export const SaveBusData =(data)=>{
     let busRecord =  {
         "name": data.name,
@@ -32,15 +43,18 @@ export const SaveBusData =(data)=>{
     }
 }
 
-export const UpdateBusData =(data)=>{
-    let record =  {
-       
-     }
+export const UpdateBusData =(id,data)=>{
     return (dispatch)=>{
         dispatch({type:'BEGIN_API'})
-        axios.put(`http://dummy.restapiexample.com/api/v1/update/${data.id}`,record)
-        .then(function (response) {
-           dispatch({type: 'UPDATE_BUS_DATA',payload: response.status});
+        dbRef.collection("Buses").doc(id).update({
+            name: data.name,
+            Type: data.Type,
+            Seats: data.Seats,
+            Company: data.Company,
+            year: data.year
+        }).then(function() {
+            dispatch({type: 'UPDATE_BUS_DATA',payload: "SUCCESS"});
+            dispatch({type: 'SHOW_NOTIFICATION',payload: true});
         })
     }
 }

@@ -29,6 +29,14 @@ const busReducer =(state=initialState, action)=>{
                 newStatus: ""
             }
         break;
+        case 'GET_SINGLE_BUS_DATA':
+            return {
+                ...state,
+                singleBusData: action.payload,
+                loader: false,
+                newStatus: ""
+            }
+        break;
         case 'BEGIN_API':
             return {
                 ...state,
