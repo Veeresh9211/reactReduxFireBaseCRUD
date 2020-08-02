@@ -11,6 +11,7 @@ export const GetBusData =()=>{
     }
 }
 
+
 export const GetSingleBusData =(id)=>{
     return (dispatch)=>{
         dispatch({type:'BEGIN_API'});
